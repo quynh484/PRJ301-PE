@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+
         <form action="execute" method="post">
             <table border="0">
 
@@ -27,13 +27,19 @@
                         <td><input type="text" name="txtb" id="txtb"></td>
                     </tr>
                     <tr>
+                        <td>Result:</td>
+                        <td><input  readonly type="text" name="txtOutput" id="txtOutput"></td>
+                    </tr>
+                    <tr>
                         <td><input type="submit" value="SHOW PRIME" id="btnSum"></td>
                         <td></td>
-                    </tr>            
+                    </tr>   
+
                 </tbody>
             </table>
+            <div id="txtError">${err}</div>
         </form>
-        
+        <br/>
         List of Executions:
         <table border="1">
             <thead>
@@ -44,7 +50,14 @@
                 </tr>
             </thead>
             <tbody>
-            <c:forEach
+                <c:forEach items="${list}" var="o" varStatus="i">
+                    <!--todo: them id-->
+                    <tr>
+                        <td id="td_${i.index +1}_1">${o.a}</td>
+                        <td id="td_${i.index +1}_2">${o.b}</td>
+                        <td id="td_${i.index +1}_3">${o.result}</td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
 
